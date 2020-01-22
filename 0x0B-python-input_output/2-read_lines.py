@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def read_lines(filename="", nb_lines=0):
     """ Read the file acording to number of required lines """
     a = 0
