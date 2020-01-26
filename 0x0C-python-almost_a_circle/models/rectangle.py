@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 from models.base import Base
-""" Rectangle class inheris from Base class """
+""" Rectangle class inheris from Base class
+    class to create Rectangles
+"""
 
 
 class Rectangle(Base):
 
-
     def __init__(self, width, height, x=0, y=0, id=None):
-        """ Constructor with private attributes """
+        """ Constructor with private attributes and its validations """
         self.width = width
         self.height = height
         self.x = x
@@ -52,7 +53,6 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
         else:
             self.__x = value
-
 
     @property
     def y(self):
