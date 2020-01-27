@@ -4,6 +4,7 @@ import json
 
 
 class Base:
+    """ Definition of attributes and methods """
 
     __nb_objects = 0
 
@@ -25,6 +26,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """ Save file with Python objects converted to Json"""
         cadena = ""
         list_dic = []
 
