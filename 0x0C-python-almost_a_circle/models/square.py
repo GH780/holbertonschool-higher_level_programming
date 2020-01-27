@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-from models.rectangle import Rectangle
 """ Square class inheris from Rectangle class
     class to create Square
 """
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """ Definition of own methods and attributes """
 
     def __init__(self, size, x=0, y=0, id=None):
         """ Constructor that uses the parameters of superclass Rectangle """
@@ -39,12 +40,22 @@ class Square(Rectangle):
                 if hasattr(self, key) is True:
                     setattr(self, key, value)
 
+    def to_dictionary(self):
+        """ Returns a dictionary with every attribute of the
+            Rectangle class
+        """
+        dic_squa = {"x": self.x, "y": self.y, "id": self.id,
+                    "size": self.width}
+        return dic_squa
+
     @property
     def size(self):
+        """ Getter to size """
         return self.width
 
     @size.setter
     def size(self, value):
+        """ Setter to size """
         if type(value) != int:
             raise TypeError("width must be an integer")
         elif value <= 0:
