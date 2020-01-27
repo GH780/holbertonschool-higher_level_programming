@@ -24,7 +24,8 @@ class Rectangle(Base):
         """ Prints the rectangle acording to parameters """
         print("\n" * self.y, end="")
         for i in range(self.height):
-            print(" " * self.x, "#" * self.width)
+            print(" " * self.x, end="")
+            print("#" * self.width)
 
     def update(self, *args, **kwargs):
         """ It allows don´t have a fixed number of arguments """
