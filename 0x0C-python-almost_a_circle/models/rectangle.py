@@ -20,11 +20,10 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """ Prints therectangle """
+        """ Prints the rectangle acording to parameters """
+        print("\n" * self.y, end="")
         for i in range(self.height):
-            print("#" * self.width)
-
-        print("", end="")
+            print(" " * self.x, "#" * self.width)
 
     @property
     def width(self):
@@ -67,7 +66,7 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        return self.__width
+        return self.__y
 
     @y.setter
     def y(self, value):
