@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Main class Base """
 import json
+import os.path
 
 
 class Base:
@@ -24,6 +25,13 @@ class Base:
         else:
             return json.dumps(list_dictionaries)
 
+    def from_json_string(json_string):
+        """ Returns a Json representation of a Python object """
+        if json_string is None or len(json_string) == 0:
+            return "[]"
+        else:
+            return json.loads(json_string)
+
     @classmethod
     def save_to_file(cls, list_objs):
         """ Save file with Python objects converted to Json"""
@@ -38,3 +46,31 @@ class Base:
         file_name += ".json"
         with open(file_name, "w") as writer:
             writer.write(cls.to_json_string(list_dic))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ Create an instance using update and its args and the values of
+            a dictionary.
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1, 1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """ Create an instance using update and its args and the values of
+            a dictionary.
+        """
+        list_obj = []
+        if os.path.isfile(cls.__name__ + ".json"):
+            with open(cls.__name__ + ".json", "r") as Reader:
+                for i in Reader:
+                    obj_py = cls.from_json_string(i)
+                    for j in obj_py:
+                        list_obj.append(cls.create(**j))
+
+        return list_obj
