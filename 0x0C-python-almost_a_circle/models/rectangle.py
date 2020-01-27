@@ -25,7 +25,7 @@ class Rectangle(Base):
         for i in range(self.height):
             print(" " * self.x, "#" * self.width)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ It allows don´t have a fixed number of arguments """
         if args:
             if len(args) == 5:
@@ -48,6 +48,11 @@ class Rectangle(Base):
                 self.width = args[1]
             if len(args) == 1:
                 self.id = args[0]
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key) is True:
+                    setattr(self, key, value)
+
 
     @property
     def width(self):
