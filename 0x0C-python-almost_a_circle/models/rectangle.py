@@ -77,3 +77,9 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         else:
             self.__y = value
+
+    def __str__(self):
+        '''Method that returns string representation of rectangle '''
+        a, d, e = self.id, self.width, self.height
+        b, c = self.x, self.y
+        return("[Rectangle] ({}) {}/{} - {}/{}".format(a, b, c, d, e))
