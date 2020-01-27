@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import json
 from models.base import Base
 """ Rectangle class inheris from Base class
     class to create Rectangles
