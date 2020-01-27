@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 from models.base import Base
 """ Rectangle class inheris from Base class
     class to create Rectangles
@@ -53,6 +54,13 @@ class Rectangle(Base):
                 if hasattr(self, key) is True:
                     setattr(self, key, value)
 
+    def to_dictionary(self):
+        """ Returns a dictionary with every attribute of the
+            Rectangle class
+        """
+        dic_rec = {"x": self.x, "y": self.y, "id": self.id,
+                   "height": self.height, "width": self.width}
+        return dic_rec
 
     @property
     def width(self):
