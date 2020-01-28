@@ -34,7 +34,7 @@ class Base:
         else:
             return json.loads(json_string)
 
-    @staticmethod
+    @classmethod
     def save_to_file(cls, list_objs):
         """ Save file with Python objects converted to Json"""
         cadena = ""
