@@ -35,16 +35,6 @@ class Base:
             return json.loads(json_string)
 
     @classmethod
-    def save_to_file(cls, list_objs):
-        """ Save file with Python objects converted to Json"""
-        list_dic = []
-        if list_objs:
-            for i in list_objs:
-                list_dic.append(cls.to_dictionary(i))
-        with open("{}.json".format(cls.__name__), "w") as writer:
-            writer.write(cls.to_json_string(list_dic))
-
-    @classmethod
     def create(cls, **dictionary):
         """ Create an instance using update and its args and the values of
             a dictionary.
@@ -58,6 +48,16 @@ class Base:
         return dummy
 
     @classmethod
+    def save_to_file(cls, list_objs):
+        """ Save file with Python objects converted to Json"""
+        list_dic = []
+        if list_objs:
+            for i in list_objs:
+                list_dic.append(cls.to_dictionary(i))
+        with open("{}.json".format(cls.__name__), "w") as writer:
+            writer.write(cls.to_json_string(list_dic))
+
+    @classmethod
     def load_from_file(cls):
         """ Create an instance using update and its args and the values of
             a dictionary.
@@ -69,5 +69,28 @@ class Base:
                     obj_py = cls.from_json_string(i)
                     for j in obj_py:
                         list_obj.append(cls.create(**j))
+        return list_obj
 
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Save file with Python objects converted to Json"""
+        list_dic = []
+        if list_objs:
+            for i in list_objs:
+                list_dic.append(cls.to_dictionary(i))
+        with open("{}.csv".format(cls.__name__), "w") as writer:
+            writer.write(cls.to_json_string(list_dic))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Create an instance using update and its args and the values of
+            a dictionary.
+        """
+        list_obj = []
+        if os.path.isfile(cls.__name__ + ".csv"):
+            with open(cls.__name__ + ".csv", "r") as Reader:
+                for i in Reader:
+                    obj_py = cls.from_json_string(i)
+                    for j in obj_py:
+                        list_obj.append(cls.create(**j))
         return list_obj
