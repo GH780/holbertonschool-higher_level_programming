@@ -38,14 +38,10 @@ class Base:
     def save_to_file(cls, list_objs):
         """ Save file with Python objects converted to Json"""
         list_dic = []
-
         if list_objs:
             for i in list_objs:
                 list_dic.append(cls.to_dictionary(i))
-                file_name = i.__class__.__name__
-
-        file_name += ".json"
-        with open(file_name, "w") as writer:
+        with open("{}.json".format(cls.__name__), "w") as writer:
             writer.write(cls.to_json_string(list_dic))
 
     @classmethod
