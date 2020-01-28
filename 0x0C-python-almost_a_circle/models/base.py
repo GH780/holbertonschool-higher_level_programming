@@ -37,12 +37,11 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ Save file with Python objects converted to Json"""
-        cadena = ""
         list_dic = []
 
         if list_objs:
             for i in list_objs:
-                list_dic.append(i.to_dictionary())
+                list_dic.append(cls.to_dictionary(i))
                 file_name = i.__class__.__name__
 
         file_name += ".json"
