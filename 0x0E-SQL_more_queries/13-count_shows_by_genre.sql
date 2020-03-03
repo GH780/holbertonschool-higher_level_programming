@@ -1,5 +1,5 @@
 -- Select with right Join and double order by.
-SELECT tv_genres.name,
+SELECT tv_genres.name as genre,
 COUNT(*) as number_of_shows
 FROM tv_genres
 JOIN tv_show_genres ON tv_show_genres.genre_id = tv_genres.id
