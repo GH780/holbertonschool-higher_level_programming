@@ -9,5 +9,5 @@ if __name__ == "__main__":
         with urr.urlopen(argv[1]) as response:
             response = response.read()
             print("{}".format(str(response, 'utf-8')))
-        except ure.URLError as e:
-            print("Error code: {}".format(e.code))
+    except ure.URLError as e:
+        print("Error code: {}".format(e.code))
