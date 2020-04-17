@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-import urllib.request as url
+import urllib.request as ur
 from sys import argv
 
-response = url.urlopen(argv[1])
-header = response.info()
-print(header['X-Request-Id'])
+with ur.urlopen(argv[1]) as header:
+    print(header.getheader('X-Request-Id'))
