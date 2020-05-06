@@ -7,8 +7,7 @@ process.argv.forEach((val, index) => {
 });
 
 function getNumber (list) {
-  if (list.length === 0) return 0;
-  if (list.length === 1) return 1;
+  if (list.length === 0 || list.length === 1) return 0;
   list.sort(function (a, b) {
     return a - b;
   });
